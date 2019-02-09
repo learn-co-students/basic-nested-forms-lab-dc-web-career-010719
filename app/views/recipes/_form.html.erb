@@ -1,3 +1,12 @@
 <%= form_for @recipe do |f| %>
   Title: <%= f.text_field :title %>
+  <%= 2.times do %>
+      <ul><%= f.fields_for :ingredients do |i| %>
+      <li><%= i.label :name %>
+      <%= i.text_field :name %>
+      <%= i.label :quantity %>
+      <%= i.number_field :quantity, in: 1.0..20.0, step: 0.5 %></li></ul>
+      <% end  %>
+      <% end %>
+  <%= f.submit %>
 <% end %>
